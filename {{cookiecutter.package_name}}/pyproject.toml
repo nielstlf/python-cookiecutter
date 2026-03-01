@@ -3,7 +3,7 @@ name = "{{cookiecutter.package_name}}"
 authors = [{name = "{{cookiecutter._full_name}}", email= "{{cookiecutter._email}}"}]
 description = "A simple Python package to {{cookiecutter.package_name}}"
 readme = "README.md"
-requires-python = ">=3.11.0"
+requires-python = ">=3.14.2"
 dynamic = ["version"]
 
 dependencies = []
@@ -28,9 +28,8 @@ classifiers = [
     "Development Status :: 2 - Pre-Alpha",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
     "Operating System :: OS Independent",
 ]
 
@@ -129,14 +128,13 @@ docstring-code-format = true # Also format code in docstrings (e.g. examples)
 [tool.tox]
 legacy_tox_ini = """
 [tox]
-envlist = py{311,312,313}
+envlist = py{314,315}
 isolated_build = True
 
 [gh-actions]
 python =
-    3.11: py311
-    3.12: py312
-    3.13: py313
+    3.14: py314
+    3.15: py315
 
 [testenv]
 passenv =

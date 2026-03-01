@@ -227,16 +227,15 @@ def test_pyproject_toml(package_path_config_dict):
     )
     assert project_toml["project"]["description"] == "A simple Python package to test-cookiecutter"
     assert project_toml["project"]["readme"] == "README.md"
-    assert project_toml["project"]["requires-python"] == ">=3.11.0"
+    assert project_toml["project"]["requires-python"] == ">=3.14.2"
     assert project_toml["project"]["license"] == "MIT"
 
     assert project_toml["project"]["classifiers"] == [
         "Development Status :: 2 - Pre-Alpha",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.11",
-        "Programming Language :: Python :: 3.12",
-        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
         "Operating System :: OS Independent",
     ]
 

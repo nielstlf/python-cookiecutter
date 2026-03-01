@@ -3,10 +3,7 @@
     "_email": "niels.postma@gmail.com",
     "_github_username_or_organization": "nielstlf",
     "package_name": "niels-python-tool-template",
-    "_github_repository_url": [
-        "https://github.com/{{cookiecutter._github_username_or_organization}}/{{cookiecutter.package_name}}",
-        "provide later"
-    ],
+    "_github_repository_url": "https://github.com/{{cookiecutter._github_username_or_organization}}/{{cookiecutter.package_name}}",
     "_license": "MIT",
     "_create_docs": "yes",
     "_copy_without_render": [
