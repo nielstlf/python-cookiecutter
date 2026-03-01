@@ -1,16 +1,14 @@
 {
-    "full_name": "Niels Postma",
-    "email": "[EMAIL_ADDRESS]",
-    "github_username_or_organization": "nielstlf",
-    "package_name": "niels-python-package",
-    "github_repository_url": [
-        "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}",
+    "_full_name": "Niels Postma",
+    "_email": "niels.postma@gmail.com",
+    "_github_username_or_organization": "nielstlf",
+    "package_name": "niels-python-tool-template",
+    "_github_repository_url": [
+        "https://github.com/{{cookiecutter._github_username_or_organization}}/{{cookiecutter.package_name}}",
         "provide later"
     ],
-    "module_name": "{{ cookiecutter.package_name|lower|replace('-', '_') }}",
-    "short_description": "A simple Python package",
-    "license": "MIT",
-    "create_docs": "yes",
+    "_license": "MIT",
+    "_create_docs": "yes",
     "_copy_without_render": [
         ".github/*"
     ]

@@ -30,17 +30,17 @@ def create_test_configs(create_docs):
     """
     test_dict = {
         "default_context": {
-            "full_name": "Test Cookiecutter",
-            "email": "testing@cookiecutter.com",
-            "github_username_or_organization": "test_cookiecutter_username",
+            "_full_name": "Test Cookiecutter",
+            "_email": "testing@cookiecutter.com",
+            "_github_username_or_organization": "test_cookiecutter_username",
             "package_name": "test-cookiecutter",
-            "github_repository_url": "https://github.com/"
-            "{{cookiecutter.github_username_or_organization}}/"
+            "_github_repository_url": "https://github.com/"
+            "{{cookiecutter._github_username_or_organization}}/"
             "{{cookiecutter.package_name}}",
-            "module_name": "test_cookiecutter_module",
-            "short_description": "Lets Test CookieCutter",
-            "license": "MIT",
-            "create_docs": "yes" if create_docs else "no",
+            "_module_name": "test_cookiecutter",
+            "_short_description": "A simple Python package to test-cookiecutter",
+            "_license": "MIT",
+            "_create_docs": "yes" if create_docs else "no",
         },
     }
     with open(CONFIG_FILENAME, "w") as config_file:
@@ -144,9 +144,9 @@ def test_directory_names(package_path_config_dict):
         "MANIFEST.in",
         "pyproject.toml",
         "README.md",
-        Path("test_cookiecutter_module") / "__init__.py",
+        Path("test_cookiecutter") / "__init__.py",
         # Directories
-        "test_cookiecutter_module",
+        "test_cookiecutter",
         "tests",
     ]
 
@@ -184,10 +184,10 @@ def test_docs(package_path_config_dict):
         ).exists() is true_if_create_docs
         assert (package_path / "docs").exists() is true_if_create_docs
         assert (
-            package_path / f"{config_dict['module_name']}/greetings.py"
+            package_path / f"{config_dict['_module_name']}/greetings.py"
         ).exists() is true_if_create_docs
         assert (
-            package_path / f"{config_dict['module_name']}/math.py"
+            package_path / f"{config_dict['_module_name']}/math.py"
         ).exists() is true_if_create_docs
 
         with open(package_path / ".pre-commit-config.yaml") as file:
@@ -220,12 +220,12 @@ def test_pyproject_toml(package_path_config_dict):
     # pyproject.toml has not asked user for
     assert (
         project_toml["project"]["authors"][0]["name"]
-        == config_dict["full_name"]
+        == config_dict["_full_name"]
     )
     assert (
-        project_toml["project"]["authors"][0]["email"] == config_dict["email"]
+        project_toml["project"]["authors"][0]["email"] == config_dict["_email"]
     )
-    assert project_toml["project"]["description"] == "Lets Test CookieCutter"
+    assert project_toml["project"]["description"] == "A simple Python package to test-cookiecutter"
     assert project_toml["project"]["readme"] == "README.md"
     assert project_toml["project"]["requires-python"] == ">=3.11.0"
     assert project_toml["project"]["license"] == "MIT"
@@ -242,7 +242,7 @@ def test_pyproject_toml(package_path_config_dict):
 
     test_repo_url = (
         f"https://github.com/"
-        f"{config_dict['github_username_or_organization']}/"
+        f"{config_dict['_github_username_or_organization']}/"
         f"{config_dict['package_name']}"
     )
 
@@ -285,11 +285,11 @@ def test_pyproject_toml(package_path_config_dict):
 
     assert project_toml["tool"]["setuptools"]["packages"]["find"][
         "include"
-    ] == [config_dict["module_name"] + "*"]
+    ] == [config_dict["_module_name"] + "*"]
 
     assert (
         project_toml["tool"]["pytest"]["ini_options"]["addopts"]
-        == f"--cov={config_dict['module_name']}"
+        == f"--cov={config_dict['_module_name']}"
     )
     assert project_toml["tool"]["ruff"]
 
@@ -313,7 +313,7 @@ def test_pip_install(pip_install):
     show_details = stdout.decode("utf8")
     assert "Name: test-cookiecutter" in show_details
     assert "Version: 0.1.dev0" in show_details
-    assert "Summary: Lets Test CookieCutter" in show_details
+    assert "Summary: A simple Python package to test-cookiecutter" in show_details
     assert (
         "Author-email: Test Cookiecutter <testing@cookiecutter.com>"
         in show_details

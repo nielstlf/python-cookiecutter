@@ -1,4 +1,4 @@
-{% if cookiecutter.create_docs == "yes" -%}
+{% if cookiecutter._create_docs == "yes" -%}
 exclude: 'conf.py'
 {%- endif %}
 

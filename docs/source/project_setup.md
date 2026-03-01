@@ -46,23 +46,28 @@ For each one, type your answer, enter a single number (or just hit return) to ch
 such as:
 
 
-* `full_name [Python developer]:` - e.g. `Adam Tyson`
-* `email [yourname@example.com]:` - e.g. `cookiecutter@adamltyson.com`
-* `github_username_or_organization [githubuser]:` - e.g. `adamltyson`
-* `package_name [python-package]:` - e.g. `my-awesome-software`
-* `Select github_repository_url:` - Default will be e.g. `https://github.com/<your-username>/my-awesome-software`, but you can also provide this later.
-* `module_name [my_awesome_software]:` - The default will be the same as `package_name` but with hyphens converted to underscores.
-* `short_description [A simple Python package]:` - Enter a simple, one-line description of your Python package.
-* `Select license:` - choose from:
+The following fields are now hidden (prefixed with an underscore) and will use their default values unless you explicitly override them:
+
+* `_full_name [Python developer]:` - e.g. `Adam Tyson`
+* `_email [yourname@example.com]:` - e.g. `cookiecutter@adamltyson.com`
+* `_github_username_or_organization [githubuser]:` - e.g. `adamltyson`
+* `_github_repository_url:` - Default will be e.g. `https://github.com/<your-username>/my-awesome-software`, but you can also provide this later.
+* `_license:` - choose from:
   - `1 - BSD-3`
   - `2 - MIT`
   - `3 - Mozilla Public License 2.0`
   - `4 - Apache Software License 2.0`
   - `5 - GNU LGPL v3.0`
   - `6 - GNU GPL v3.0`
-* `Select create_docs:` - Whether to generate documentation using [Sphinx](https://www.sphinx-doc.org/en/master/), choose from:
+* `_create_docs:` - Whether to generate documentation usando [Sphinx](https://www.sphinx-doc.org/en/master/), choose from:
   - `1 - Yes`
   - `2 - No`
+
+You will only be prompted for the following visible fields:
+
+* `package_name [python-package]:` - e.g. `my-awesome-software`
+* `_module_name [my_awesome_software]:` - The default will be the same as `package_name` but with hyphens converted to underscores.
+* `_short_description [A simple Python package]:` - Enter a simple, one-line description of your Python package.
 
 This is the structure cookiecutter will create:
 ```
@@ -86,7 +91,7 @@ This is the structure cookiecutter will create:
 A project with this information will then be written to the current working directory.
 
 :::{important}
-If you respond positively to `Select create_docs:`, an additional `docs` folder will be created and two example Python modules (`math.py` and `greetings.py`) will be added to the above structure.
+If you respond positively to `_create_docs:`, an additional `docs` folder will be created and two example Python modules (`math.py` and `greetings.py`) will be added to the above structure.
 :::
 
 ```

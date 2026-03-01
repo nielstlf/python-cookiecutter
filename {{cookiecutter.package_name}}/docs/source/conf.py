@@ -21,8 +21,8 @@ autodoc_mock_imports = []
 sys.path.insert(0, os.path.abspath("../.."))
 
 project = "{{cookiecutter.package_name}}"
-copyright = "2022, {{cookiecutter.full_name}}"
-author = "{{cookiecutter.full_name}}"
+copyright = "2022, {{cookiecutter._full_name}}"
+author = "{{cookiecutter._full_name}}"
 try:
     full_version = get_version(project)
     # Splitting the release on '+' to remove the commit hash
@@ -98,7 +98,7 @@ html_theme_options = {
             # Label for this link
             "name": "GitHub",
             # URL where the link will redirect
-            "url": "{{ cookiecutter.github_repository_url }}",  # required
+            "url": "{{ cookiecutter._github_repository_url }}",  # required
             # Icon class (if "type": "fontawesome"),
             # or path to local image (if "type": "local")
             "icon": "fa-brands fa-github",
@@ -115,7 +115,7 @@ html_theme_options = {
 # Sphinx will create the appropriate CNAME file in the build directory
 # The default is the URL of the GitHub pages
 # https://www.sphinx-doc.org/en/master/usage/extensions/githubpages.html
-github_user = "{{cookiecutter.github_username_or_organization}}"
+github_user = "{{cookiecutter._github_username_or_organization}}"
 html_baseurl = f"https://{github_user}.github.io/{project}"
 sitemap_url_scheme = "{link}"
 

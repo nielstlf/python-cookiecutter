@@ -1,8 +1,8 @@
 import os
 import shutil
 
-create_docs = "{{ cookiecutter.create_docs }}"
-module_name = "{{ cookiecutter.module_name }}"
+create_docs = "{{ cookiecutter._create_docs }}"
+module_name = "{{ cookiecutter.package_name | lower | replace('-', '_') }}"
 
 if __name__ == "__main__":
     if create_docs != "yes":

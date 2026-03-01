@@ -1,24 +1,24 @@
 [project]
 name = "{{cookiecutter.package_name}}"
-authors = [{name = "{{cookiecutter.full_name}}", email= "{{cookiecutter.email}}"}]
-description = "{{cookiecutter.short_description}}"
+authors = [{name = "{{cookiecutter._full_name}}", email= "{{cookiecutter._email}}"}]
+description = "A simple Python package to {{cookiecutter.package_name}}"
 readme = "README.md"
 requires-python = ">=3.11.0"
 dynamic = ["version"]
 
 dependencies = []
 
-{% if cookiecutter.license == "MIT" -%}
+{% if cookiecutter._license == "MIT" -%}
 license = "MIT"
-{%- elif cookiecutter.license == "BSD-3" -%}
+{%- elif cookiecutter._license == "BSD-3" -%}
 license = "BSD-3-Clause"
-{%- elif cookiecutter.license == "GNU GPL v3.0" -%}
+{%- elif cookiecutter._license == "GNU GPL v3.0" -%}
 license = "GPL-3.0-only"
-{%- elif cookiecutter.license == "GNU LGPL v3.0" -%}
+{%- elif cookiecutter._license == "GNU LGPL v3.0" -%}
 license = "LGPL-3.0-only"
-{%- elif cookiecutter.license == "Apache Software License 2.0" -%}
+{%- elif cookiecutter._license == "Apache Software License 2.0" -%}
 license = "Apache-2.0"
-{%- elif cookiecutter.license == "Mozilla Public License 2.0" -%}
+{%- elif cookiecutter._license == "Mozilla Public License 2.0" -%}
 license = "MPL-2.0"
 {%- endif %}
 
@@ -34,17 +34,17 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
-{% if cookiecutter.github_repository_url != 'provide later' -%}
+{% if cookiecutter._github_repository_url != 'provide later' -%}
 [project.urls]
-"Homepage" = "{{ cookiecutter.github_repository_url }}"
-"Bug Tracker" = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
-{% if cookiecutter.create_docs == "yes" -%}
-"Documentation" = "https://{{cookiecutter.github_username_or_organization}}.github.io/{{cookiecutter.package_name}}"
-{% elif cookiecutter.create_docs == "no" -%}
-"Documentation" = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
+"Homepage" = "{{ cookiecutter._github_repository_url }}"
+"Bug Tracker" = "https://github.com/{{cookiecutter._github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
+{% if cookiecutter._create_docs == "yes" -%}
+"Documentation" = "https://{{cookiecutter._github_username_or_organization}}.github.io/{{cookiecutter.package_name}}"
+{% elif cookiecutter._create_docs == "no" -%}
+"Documentation" = "https://github.com/{{cookiecutter._github_username_or_organization}}/{{cookiecutter.package_name}}"
 {%- endif %}
-"Source Code" = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}"
-"User Support" = "https://github.com/{{cookiecutter.github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
+"Source Code" = "https://github.com/{{cookiecutter._github_username_or_organization}}/{{cookiecutter.package_name}}"
+"User Support" = "https://github.com/{{cookiecutter._github_username_or_organization}}/{{cookiecutter.package_name}}/issues"
 {%- endif %}
 
 [project.optional-dependencies]
@@ -71,15 +71,15 @@ build-backend = "setuptools.build_meta"
 include-package-data = true
 
 [tool.setuptools.packages.find]
-include = ["{{cookiecutter.module_name}}*"]
-{% if cookiecutter.create_docs == "yes" -%}
+include = ["{{cookiecutter.package_name|lower|replace('-', '_')}}*"]
+{% if cookiecutter._create_docs == "yes" -%}
 exclude = ["tests", "docs*"]
-{% elif cookiecutter.create_docs == "no" -%}
+{% elif cookiecutter._create_docs == "no" -%}
 exclude = ["tests*"]
 {%- endif %}
 
 [tool.pytest.ini_options]
-addopts = "--cov={{cookiecutter.module_name}}"
+addopts = "--cov={{cookiecutter.package_name|lower|replace('-', '_')}}"
 filterwarnings = [
     "error",
 ]
@@ -87,7 +87,7 @@ filterwarnings = [
 [tool.setuptools_scm]
 
 [tool.check-manifest]
-{% if cookiecutter.create_docs == "yes" -%}
+{% if cookiecutter._create_docs == "yes" -%}
 ignore = [
   ".yaml",
   "tox.ini",
@@ -97,7 +97,7 @@ ignore = [
   "docs/",
   "docs/source/",
 ]
-{% elif cookiecutter.create_docs == "no" -%}
+{% elif cookiecutter._create_docs == "no" -%}
 ignore = [
   ".yaml",
   "tox.ini",
@@ -145,7 +145,7 @@ passenv =
 extras =
     dev
 commands =
-    pytest -v --color=yes --cov={{cookiecutter.module_name}} --cov-report=xml
+    pytest -v --color=yes --cov={{cookiecutter.package_name|lower|replace('-', '_')}} --cov-report=xml
 """
 
 
