@@ -8,9 +8,14 @@ dynamic = ["version"]
 license = "BSD-3-Clause"
 license-files = ["LICENSE"]
 
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 dependencies = [
     "cookiecutter>=2.6.0",
+    "urllib3<2",
+    "chardet<6",
+    "idna<4",
+    "requests<3",
+    "pyyaml>=6.0.1", 
 ]
 
 [build-system]
